@@ -1,0 +1,8 @@
+Payloads (stdin, one field per line: name, bio, quantity)
+
+normal           Alice / Loves hiking / 2
+abuse1_admin     AAAAAAAAAAAAAAAAAAA (19 x A) / hello / 1
+abuse1_crash     100 x A / hello / 1
+abuse2_negative  Mallory / hello / -10
+abuse2_overflow  Mallory / hello / 100000000
+abuse3_xss       Eve / <script>alert(document.cookie)</script> / 1

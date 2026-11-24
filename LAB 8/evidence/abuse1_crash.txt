@@ -1,0 +1,9 @@
+Name: Bio: Ticket quantity: 
+--- Registration summary ---
+Name      : AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhello
+
+Role      : ADMIN
+Quantity  : 1
+Total due : 50
+Profile page written to profile.html
+exit=0

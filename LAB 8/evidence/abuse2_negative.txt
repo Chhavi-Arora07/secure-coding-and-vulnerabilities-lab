@@ -1,0 +1,7 @@
+Name: Bio: Ticket quantity: 
+--- Registration summary ---
+Name      : Mallory
+Role      : user
+Quantity  : -10
+Total due : -500
+Profile page written to profile.html

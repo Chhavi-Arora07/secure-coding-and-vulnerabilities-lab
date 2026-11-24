@@ -1,0 +1,21 @@
+=================================================================
+==111==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fa707e00054 at pc 0x7fa70a091ad0 bp 0x7ffdef13c1b0 sp 0x7ffdef13b938
+WRITE of size 101 at 0x7fa707e00054 thread T0
+    #0 0x7fa70a091acf in scanf_common ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors_format.inc:342
+    #1 0x7fa70a0cd1f2 in __isoc99_vscanf ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:1489
+    #2 0x7fa70a0cdc40 in __isoc99_scanf ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:1520
+    #3 0x557513fb6459 in main register.c:23
+    #4 0x7fa709c2a1c9  (/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9)
+    #5 0x7fa709c2a28a in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2a28a)
+    #6 0x557513fb6264 in _start (register_asan+0x1264)
+
+Address 0x7fa707e00054 is located in stack of thread T0 at offset 84 in frame
+    #0 0x557513fb6338 in main register.c:14
+
+  This frame has 3 object(s):
+    [48, 52) 'quantity' (line 17)
+    [64, 84) 'u' (line 15)
+    [128, 256) 'bio' (line 16) <== Memory access at offset 84 partially underflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors_format.inc:342 in scanf_common

@@ -1,0 +1,7 @@
+Name: Bio: Ticket quantity: 
+--- Registration summary ---
+Name      : Eve
+Role      : user
+Quantity  : 1
+Total due : 50
+Profile page written to profile.html
