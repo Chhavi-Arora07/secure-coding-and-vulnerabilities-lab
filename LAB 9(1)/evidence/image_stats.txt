@@ -1,0 +1,4 @@
+plaintext: 4096 blocks, 35 unique, 4061 repeated
+AES-ECB : 4096 blocks, 35 unique, 4061 repeated
+AES-GCM : 4096 blocks, 4096 unique, 0 repeated
+saved images to evidence/ (original.png, ecb.png, gcm.png, comparison.png)

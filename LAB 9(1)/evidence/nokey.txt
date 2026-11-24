@@ -1,0 +1,1 @@
+AES_KEY is not set. Run:  export AES_KEY=$(python aes_lab.py genkey)

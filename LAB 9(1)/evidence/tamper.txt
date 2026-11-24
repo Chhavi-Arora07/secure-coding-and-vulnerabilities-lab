@@ -1,0 +1,13 @@
+original plaintext : b'PAY ALICE $100 - approved by finance'
+GCM blob (hex)     : 9bfc100ce8f58bfb8c20a6432cd9bb1dfcf59cac312212e6de2e150d566954493a1c2a1c9e1a440cae661dee4072b64853ce358595d0d515371116eadd5f80f7
+
+[1] untouched ciphertext -> b'PAY ALICE $100 - approved by finance'
+
+[2] one bit flipped in ciphertext byte 16
+    AES-GCM: InvalidTag -> authentication FAILED, no plaintext returned
+
+[3] one bit flipped in the 16-byte tag
+    AES-GCM: InvalidTag -> authentication FAILED
+
+[4] same one-bit flip against AES-ECB (no authentication)
+    decrypts without any error to: b'D\xb7\xc8n\xcfuB\xbcd(n\xb2\x87V\xe4\x03 approved by finance            '

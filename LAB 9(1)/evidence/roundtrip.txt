@@ -1,0 +1,4 @@
+encrypted /tmp/secret.txt -> /tmp/secret.enc (AES-256-GCM, random nonce)
+decrypted /tmp/secret.enc -> /tmp/secret.out (tag verified)
+round trip: identical
+AUTHENTICATION FAILED: file was modified or the key is wrong.

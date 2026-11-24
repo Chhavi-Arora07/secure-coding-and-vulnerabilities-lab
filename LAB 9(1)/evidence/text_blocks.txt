@@ -1,0 +1,26 @@
+--- AES-ECB ciphertext, one 16-byte block per line ---
+block  0: 5ff9c7da2024a48517b1ca16b86ad94a
+block  1: 5ff9c7da2024a48517b1ca16b86ad94a
+block  2: 5ff9c7da2024a48517b1ca16b86ad94a
+block  3: 5ff9c7da2024a48517b1ca16b86ad94a
+block  4: a0a9c871b0464ea4723b4f949dafafad
+block  5: 5ff9c7da2024a48517b1ca16b86ad94a
+block  6: 5ff9c7da2024a48517b1ca16b86ad94a
+block  7: 5ff9c7da2024a48517b1ca16b86ad94a
+8 blocks, 2 unique, 6 repeated
+
+--- AES-GCM ciphertext, one 16-byte block per line ---
+block  0: 2ae2793ec0fb05da953dd8c05510fa71
+block  1: ab1b7a7d7188ab3f6c06ac7742695738
+block  2: 64e378a5309ca8311c21c3df815a2a6d
+block  3: f3df1e04594d69666ba3ddfc16e56450
+block  4: 46a7d2f8cd3ac5bb67e938ab18a6fe07
+block  5: 4925f923e21ada9d5a6ecf9b07b68197
+block  6: a6fd0b269012f74ae82622c648439ff9
+block  7: 23fe702c0dc149b18ff7ef715b3a8fb2
+8 blocks, 8 unique, 0 repeated
+
+GCM, same plaintext encrypted twice, same key:
+  nonce 1: 242c3dbc8355ae5b7141ff20
+  nonce 2: 1de42abaa2b5342e7bba0953
+  outputs identical? False
