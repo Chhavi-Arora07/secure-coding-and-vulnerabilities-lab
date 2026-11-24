@@ -1,0 +1,42 @@
+{
+  "D1_path_traversal_read": {
+    "status": 200,
+    "confirmed": true,
+    "evidence": "#!/usr/bin/env python3\n\"\"\"\nvaultapp - small file-based appli"
+  },
+  "D2_command_injection": {
+    "confirmed": true,
+    "evidence": "marker file created by injected command"
+  },
+  "D3_sql_injection": {
+    "status": 200,
+    "confirmed": true,
+    "evidence": "[('a.txt', 'anon'), ('shell.php', 'anon'), ('../traversal_upload.txt', 'anon'), "
+  },
+  "D4_unrestricted_upload": {
+    "php_status": 201,
+    "traversal_write_status": 201,
+    "confirmed": true
+  },
+  "D5_pickle_rce": {
+    "status": 200,
+    "confirmed": true,
+    "note": "requires admin token, which is hard-coded in source"
+  },
+  "D6_hardcoded_secret": {
+    "wrong_token_status": 403,
+    "source_token_status": 200,
+    "confirmed": true
+  },
+  "D7_weak_prng_tokens": {
+    "sample": [
+      "ru6sbrg6z4p6",
+      "jfuwle0d2vax",
+      "bgpj3hqldfo2",
+      "nc1bknlopu7d",
+      "3v6dz8agwylx"
+    ],
+    "confirmed": false,
+    "note": "format observable; predictability needs seed analysis, not tested"
+  }
+}

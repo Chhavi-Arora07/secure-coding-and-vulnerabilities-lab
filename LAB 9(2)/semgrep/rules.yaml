@@ -1,0 +1,72 @@
+rules:
+  - id: vault.path-join-user-input
+    languages: [python]
+    severity: ERROR
+    message: User input flows into os.path.join and then open() without normalisation (CWE-22).
+    metadata: {cwe: "CWE-22", confidence: HIGH}
+    mode: taint
+    pattern-sources:
+      - pattern: parse_qs(...)
+      - pattern: $Q.get(...)[0]
+    pattern-sinks:
+      - pattern: open(os.path.join(...), ...)
+      - pattern: os.path.join($BASE, $TAINT)
+    pattern-sanitizers:
+      - pattern: os.path.basename(...)
+      - pattern: os.path.realpath(...)
+  - id: vault.os-popen-concat
+    languages: [python]
+    severity: ERROR
+    message: Shell command built by string concatenation (CWE-78).
+    metadata: {cwe: "CWE-78", confidence: HIGH}
+    pattern-either:
+      - pattern: os.popen($A + ...)
+      - pattern: os.system($A + ...)
+  - id: vault.sql-concat
+    languages: [python]
+    severity: ERROR
+    message: SQL built by string concatenation, use parameters (CWE-89).
+    metadata: {cwe: "CWE-89", confidence: HIGH}
+    patterns:
+      - pattern: $SQL = "..." + $X + "..."
+      - pattern-inside: |
+          ... 
+          $CON.execute($SQL)
+  - id: vault.pickle-loads
+    languages: [python]
+    severity: ERROR
+    message: pickle.loads on data that may be untrusted (CWE-502).
+    metadata: {cwe: "CWE-502", confidence: HIGH}
+    pattern: pickle.loads(...)
+  - id: vault.hardcoded-secret
+    languages: [python]
+    severity: WARNING
+    message: Hard-coded credential or token (CWE-798).
+    metadata: {cwe: "CWE-798", confidence: MEDIUM}
+    pattern-regex: (?i)^(\w*(token|secret|password|passwd|api_?key)\w*)\s*=\s*["'][^"']{8,}["']
+  - id: vault.weak-hash
+    languages: [python]
+    severity: WARNING
+    message: MD5/SHA1 is a weak hash (CWE-327).
+    metadata: {cwe: "CWE-327", confidence: MEDIUM}
+    pattern-either:
+      - pattern: hashlib.md5(...)
+      - pattern: hashlib.sha1(...)
+  - id: vault.insecure-random
+    languages: [python]
+    severity: WARNING
+    message: random module is not cryptographically secure; use secrets (CWE-338).
+    metadata: {cwe: "CWE-338", confidence: MEDIUM}
+    pattern: random.choice(...)
+  - id: vault.subprocess-run
+    languages: [python]
+    severity: INFO
+    message: subprocess usage, check arguments are not attacker controlled.
+    metadata: {cwe: "CWE-78", confidence: LOW}
+    pattern: subprocess.run(...)
+  - id: vault.bind-all-interfaces
+    languages: [python]
+    severity: WARNING
+    message: Server binds to 0.0.0.0 (CWE-668).
+    metadata: {cwe: "CWE-668", confidence: MEDIUM}
+    pattern-regex: \(\s*["']0\.0\.0\.0["']
